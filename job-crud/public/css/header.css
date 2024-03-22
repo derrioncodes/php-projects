@@ -1,0 +1,37 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Lato", sans-serif;;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+body{
+    background-color: #f8f9fd;
+}
+
+.app-header{
+    background-color: white;
+    width: 100vw;
+    height: 60px;
+}
+
+.app-header .logout{
+    width: 90%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.app-header .logout:hover{
+    color: #4abe84;
+}
+
