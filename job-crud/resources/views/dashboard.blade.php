@@ -32,7 +32,7 @@
         </form>
 
         <div class="create-job">
-            <a href="/add-job">
+            <a href="/jobs/create">
                 <button type="button">Add a job</button>
             </a>
         </div>
@@ -42,8 +42,33 @@
         <h2>You have not added any jobs</h2>
     </div> --}}
 
-
+    @foreach ($userJobs as $job)
     <div class="job">
+        <div class="job-details">
+            <h2 class="job-title">{{$job->position}}</h2>
+            <p class="job-company">{{$job->company}}</p>
+            <p class="date-added">
+                <?php
+                $date = $job->created_at;
+                echo date_format($date,"F d, Y");
+                ?>
+            </p>
+            
+        </div>
+
+        <div class="job-options">
+            <i id="options" class="fa fa-ellipsis-v"></i>
+        </div>  
+
+        <div class="update-delete-modal-container">
+            <a href="/jobs/{{$job->id}}/edit"><p class="edit">Edit</p></a>
+            <a href="#" target="_blank"><p class="delete">Delete</p></a>
+            <p class="cancel">Cancel</p>
+        </div>
+    </div>
+        
+    @endforeach
+    {{-- <div class="job">
         <div class="job-details">
             <h2 class="job-title">Full Stack Web Developer (Workforce)</h2>
             <p class="job-company">Tech Skills Staffing</p>
@@ -59,7 +84,7 @@
             <p class="delete">Delete</p>
             <p class="cancel">Cancel</p>
         </div>
-    </div> 
+    </div>  --}}
     
 </div>
 @endsection

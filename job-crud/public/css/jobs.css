@@ -196,11 +196,13 @@ body{
     bottom: 0px;
 
     display: none;
+    /* visibility: hidden; */
     
 }
 
 .update-delete-modal-container.active{
     display: block;
+    /* visibility: visible; */
 }
 
 .update-delete-modal-container p{

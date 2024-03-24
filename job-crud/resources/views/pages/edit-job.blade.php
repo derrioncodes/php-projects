@@ -1,6 +1,6 @@
 @extends('layouts.main-app')
 
-@section('title', 'Add a job')
+@section('title', 'Edit a job')
 
 @section('content')
 <div class="container">
@@ -9,7 +9,7 @@
             <i class="fa fa-edit"></i>
         </div>
         
-        <h1 class="form-title">Add a job</h1>
+        <h1 class="form-title">Edit a job</h1>
 
         <form class="form">
             <div class="input-field">
@@ -22,7 +22,7 @@
                 <input type="email" id="email" name="email" placeholder="Company"/>
             </div>
 
-            <button class="form-btn">Add job to list</button>
+            <button class="form-btn">Edit job</button>
 
             <a href="/dashboard"><button type="button" class="form-btn cancel">Cancel</button></a>
 
