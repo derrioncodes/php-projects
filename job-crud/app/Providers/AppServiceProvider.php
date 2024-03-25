@@ -22,7 +22,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        View::composer(['layouts.main-app'], function(View $view){
+        View::composer(['dashboard','pages.*'], function($view){
             $user = Auth::user();
 
             $view->with('userJobs', User::find($user->id)->jobs);

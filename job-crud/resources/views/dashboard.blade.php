@@ -25,11 +25,12 @@
 <div class="jobs-container">
 
     <div class="jobs-header">
-        <form class="form">
+        <form class="form" method="GET" action="/search">
             <div class="input-field">
                 <input type="text" id="search" name="search" placeholder="Search for job"/>
             </div>
         </form>
+        
 
         <div class="create-job">
             <a href="/jobs/create">
@@ -41,6 +42,11 @@
     {{-- <div class="empty-job">
         <h2>You have not added any jobs</h2>
     </div> --}}
+ 
+       
+    
+   
+    
 
     @foreach ($userJobs as $job)
     <div class="job">
@@ -62,29 +68,17 @@
 
         <div class="update-delete-modal-container">
             <a href="/jobs/{{$job->id}}/edit"><p class="edit">Edit</p></a>
-            <a href="#" target="_blank"><p class="delete">Delete</p></a>
+            {{-- <a href="#"><p class="delete">Delete</p></a> --}}
+            <form method="POST" action="/jobs/{{$job->id}}" style="height: 100%;">
+                @csrf
+                @method('DELETE')
+                <a href="/jobs/{{$job->id}}" onclick="event.preventDefault();
+                this.closest('form').submit();"><p class="delete">Delete</p></a>
+            </form>
             <p class="cancel">Cancel</p>
         </div>
     </div>
-        
     @endforeach
-    {{-- <div class="job">
-        <div class="job-details">
-            <h2 class="job-title">Full Stack Web Developer (Workforce)</h2>
-            <p class="job-company">Tech Skills Staffing</p>
-            <p class="date-added">March 9, 2024</p>
-        </div>
-
-        <div class="job-options">
-            <i id="options" class="fa fa-ellipsis-v"></i>
-        </div>  
-
-        <div class="update-delete-modal-container">
-            <p class="edit">Edit</p>
-            <p class="delete">Delete</p>
-            <p class="cancel">Cancel</p>
-        </div>
-    </div>  --}}
     
 </div>
 @endsection

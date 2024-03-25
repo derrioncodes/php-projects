@@ -11,15 +11,21 @@
         
         <h1 class="form-title">Edit a job</h1>
 
-        <form class="form">
+        
+
+        <form class="form" method="POST" action="/jobs/{{$job->id}}">
+            @csrf
+            @method('PUT')
             <div class="input-field">
-                <label for="fullname">Position</label>
-                <input type="text" id="fullname" name="fullname" placeholder="Position"/>
+                <label for="position">Position</label>
+                <input type="text" id="position" name="position" placeholder="{{$job->position}}"/>
+                <span style="color: red;">@error('position'){{$message}}@enderror</span>
             </div>
 
             <div class="input-field">
                 <label for="company">Company</label>
-                <input type="email" id="email" name="email" placeholder="Company"/>
+                <input type="text" id="company" name="company" placeholder="{{$job->company}}"/>
+                <span style="color: red;">@error('company'){{$message}}@enderror</span>
             </div>
 
             <button class="form-btn">Edit job</button>

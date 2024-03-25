@@ -31,11 +31,14 @@ class JobController extends Controller
         return view('dashboard');
     }
 
+
+
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
+        
         return view('pages/add-job');
     }
 
@@ -44,7 +47,17 @@ class JobController extends Controller
      */
     public function store(StoreJobRequest $request)
     {
-        return view('pages/add-job');
+        $user = Auth::user();
+
+        $job = new Job;
+        $job->user_id = $user->id;
+        $job->position = $request->position;
+        $job->company = $request->company;
+
+ 
+        $job->save();
+        // return view('pages/add-job');
+        return redirect('/jobs');
     }
 
     /**
@@ -52,30 +65,48 @@ class JobController extends Controller
      */
     public function show(Job $job)
     {
+        // $job = Job::find($id);
+        // return $job;
         return view('pages/edit-job');
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Job $job)
+    public function edit(Job $job, $id)
     {
-        return view('pages/edit-job');
+        $job = Job::find($id);
+        return view('pages/edit-job', [
+            "job" => $job
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateJobRequest $request, Job $job)
+    public function update(UpdateJobRequest $request, $id)
     {
-        return view('pages/edit-job');
+
+        $user = Auth::user();
+
+        $job = Job::find($id);
+        $job->user_id = $user->id;
+        $job->position = $request->position;
+        $job->company = $request->company;
+ 
+        $job->save();
+        // return view('pages/add-job');
+        return redirect('/jobs');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Job $job)
+    public function destroy(Job $job, $id)
     {
-        //
+        $job = Job::find($id);
+        $job->delete();
+
+        return redirect('dashboard');
     }
 }

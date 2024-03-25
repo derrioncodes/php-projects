@@ -19,6 +19,7 @@ Route::group([
     'middleware' => ['auth', 'verified'],
     'prefix' => 'jobs'
 ],(function () {
+
     Route::get('/', [JobController::class, 'index']);
 
     Route::get('/create', [JobController::class, 'create']);
